@@ -1,24 +1,30 @@
 {
-  "name": "Python Flask Development Container",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "hostRequirements": {
-    "cpus": 4
+  "name": "Secure Flask PWA DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm", // Faster, smaller, and more relevant than "universal"
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "18" }, // For JS tooling/PWA, if needed
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "waitFor": "onCreateCommand",
-  "updateContentCommand": "pip install -r requirements.txt",
-  "postCreateCommand": "",
-  "postAttachCommand": {},
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb"
+  },
+  "postCreateCommand": "pip install -r requirements.txt && npm install --omit=dev || true", // Single command, caching, ignore npm if not present
   "portsAttributes": {
+    "5000": {
+      "label": "Flask Application",
+      "onAutoForward": "openBrowser"
+    },
     "3000": {
       "label": "API",
       "onAutoForward": "silent"
-    },
-    "5000": {
-      "label": "Application",
-      "onAutoForward": "openBrowser"
     }
   },
   "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
     "vscode": {
       "settings": {
         "files.autoSave": "onFocusChange",
@@ -29,42 +35,42 @@
           "editor.defaultFormatter": "ms-python.black-formatter"
         },
         "editor.fontSize": 18,
-        "extensions.ignoreRecommendations": true,
-        "unwantedRecommendations": ["ms-python.vscode-python-envs"],
         "terminal.integrated.defaultProfile.windows": "Git Bash",
         "window.restoreWindows": "preserve",
         "workbench.editorAssociations": {
           "*.md": "vscode.markdown.preview.editor"
         },
-      	"workbench.colorTheme": "Default Dark+",
-      	"workbench.iconTheme": "vscode-icons",
-      	"github.copilot.enable": {
-      		"python": false,
-      		"html": false,
-      		"css": false,
-      		"SQL": false
-      	},
+        "workbench.colorTheme": "Default Dark+",
+        "workbench.iconTheme": "vscode-icons",
+        "github.copilot.enable": {
+          "*": true,
+          "python": false,
+          "html": false,
+          "css": false,
+          "sql": false
+        },
         "chat.agent.enabled": false
       },
       "extensions": [
-        "McCarter.start-git-bash",
-        "yy0931.vscode-sqlite3-editor",
-        "medo64.render-crlf",
-        "ecmel.vscode-html-css",
         "ms-python.python",
-        "esbenp.prettier-vscode",
-        "oderwat.indent-rainbow",
-        "ritwickdey.LiveServer",
-        "tomoki1207.pdf",
-        "GitHub.codespaces",
+        "ms-python.black-formatter",
+        "ms-python.pylint",
         "ms-python.debugpy",
         "ms-python.vscode-pylance",
-        "yahyabatulu.vscode-markdown-alert",
-        "bierner.markdown-preview-github-styles",
+        "esbenp.prettier-vscode",
+        "ecmel.vscode-html-css",
+        "oderwat.indent-rainbow",
+        "ritwickdey.LiveServer",
+        "GitHub.codespaces",
         "mechatroner.rainbow-csv",
-        "ms-python.pylint"
+        "yy0931.vscode-sqlite3-editor",
+        "bierner.markdown-preview-github-styles",
+        "yahyabatulu.vscode-markdown-alert",
+        "medo64.render-crlf"
       ]
     }
   },
-  "forwardPorts": [5000, 3000]
+  "forwardPorts": [5000, 3000],
+  "remoteUser": "vscode",
+  "shutdownAction": "stopContainer"
 }
