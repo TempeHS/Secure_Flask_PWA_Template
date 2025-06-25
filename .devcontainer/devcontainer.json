@@ -1,8 +1,8 @@
 {
   "name": "Secure Flask PWA DevContainer",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm", // Faster, smaller, and more relevant than "universal"
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": { "version": "18" }, // For JS tooling/PWA, if needed
+    "ghcr.io/devcontainers/features/node:1": { "version": "18" },
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
@@ -10,7 +10,7 @@
     "cpus": 2,
     "memory": "4gb"
   },
-  "postCreateCommand": "pip install -r requirements.txt && npm install --omit=dev || true", // Single command, caching, ignore npm if not present
+  "postCreateCommand": "pip install -r requirements.txt && (npm ci || true)",
   "portsAttributes": {
     "5000": {
       "label": "Flask Application",
@@ -30,16 +30,33 @@
         "files.autoSave": "onFocusChange",
         "editor.formatOnPaste": true,
         "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": true,
+          "source.fixAll": true
+        },
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "[python]": {
-          "editor.defaultFormatter": "ms-python.black-formatter"
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          }
         },
+        "[html]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[css]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.testing.pytestEnabled": true,
         "editor.fontSize": 18,
-        "terminal.integrated.defaultProfile.windows": "Git Bash",
-        "window.restoreWindows": "preserve",
-        "workbench.editorAssociations": {
-          "*.md": "vscode.markdown.preview.editor"
-        },
         "workbench.colorTheme": "Default Dark+",
         "workbench.iconTheme": "vscode-icons",
         "github.copilot.enable": {
@@ -49,7 +66,10 @@
           "css": false,
           "sql": false
         },
-        "chat.agent.enabled": false
+        "chat.agent.enabled": false,
+        "emmet.includeLanguages": {
+          "javascript": "javascriptreact"
+        }
       },
       "extensions": [
         "ms-python.python",
