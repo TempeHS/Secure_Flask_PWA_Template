@@ -1,24 +1,48 @@
-{				
-	"files.autoSave": "onFocusChange",
-	"editor.formatOnPaste": true,
-	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"[python]": {
-    		"editor.defaultFormatter": "ms-python.black-formatter"
-	},
-	"editor.fontSize": 18,
-	"terminal.integrated.defaultProfile.windows": "Git Bash",
-	"window.restoreWindows": "preserve",
-	"workbench.editorAssociations": {
-        	"*.md": "vscode.markdown.preview.editor"
-    	},
-	"workbench.colorTheme": "Default Dark+",
-	"workbench.iconTheme": "vscode-icons",
-	"github.copilot.enable": {
-		"python": false,
-		"html": false,
-		"css": false,
-		"SQL": false
-	},
-        "chat.agent.enabled": false
+{
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.fixAll": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.fontSize": 18,
+    "window.restoreWindows": "preserve",
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    },
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "vscode-icons",
+    "github.copilot.enable": {
+        "python": false,
+        "html": false,
+        "css": false,
+        "SQL": false
+    },
+    "chat.agent.enabled": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.testing.pytestEnabled": true,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    }
 }
