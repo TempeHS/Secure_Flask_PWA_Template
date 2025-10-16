@@ -1,8 +1,8 @@
 {
   "name": "Python Flask Development Container",
-  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "image": "mcr.microsoft.com/devcontainers/python:0-3.11-bullseye",
   "features": {
-    "ghcr.io/devcontainers/features/python:1": {}
+    "ghcr.io/devcontainers-contrib/features/coverage-py:2": {}
   },
   "hostRequirements": {
     "cpus": 4
