@@ -1,0 +1,27 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container">
+  <div class="column">
+    <h2>Welcome to the Devlog home</h2>
+  </div>
+</div>
+<div class="container">
+  <div class="columns">
+    {% for entry in entries %}
+    <div class="column">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ entry.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            {{ entry.author }}
+          </h6>
+          <p class="card-text">{{ entry.message }}</p>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <br />
+    <h5>No entries yet.</h4>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

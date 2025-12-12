@@ -1,7 +1,8 @@
 -- database: ./database.db
 
+-- CREATE TABLE logs(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, author TEXT NOT NULL, date_created TIME NOT NULL, message TEXT NOT NULL)
+-- CREATE TABLE users(id INTEGER PRIMARY KEY autoincrement, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL);
+
 -- CREATE TABLE id7-tusers(id INTEGER PRIMARY KEY autoincrement,username TEXT NOT NULL UNIQUE, password TEXT NOT NULL);
-
 -- INSERT INTO id7-tusers(username,password) VALUES ("","");
-
 -- SELECT * FROM extension;

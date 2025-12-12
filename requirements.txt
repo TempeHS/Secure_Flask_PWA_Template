@@ -3,3 +3,7 @@ bcrypt
 flask_wtf
 flask-csp
 requests
+qrcode
+pyotp
+pyqrcode
+flask_jwt_extended
