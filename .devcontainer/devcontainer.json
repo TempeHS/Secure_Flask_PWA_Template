@@ -7,7 +7,7 @@
   },
   "waitFor": "onCreateCommand",
   "updateContentCommand": "",
-  "postCreateCommand": "pip install -r requirements.txt && apt-get clean && rm -rf /root/.cache/pip",
+  "postCreateCommand": "pip install -r requirements.txt && sudo apt-get clean && rm -rf /root/.cache/pip",
   "postStartCommand": "",   // For commands to run each Codespace start
   "customizations": {
     "vscode": {
